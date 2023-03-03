@@ -17,13 +17,18 @@ public class PersonController {
     }
 
     @GetMapping("/persons")
-    public List<Person> getUsers() {
+    public List<Person> getPersons() {
         return (List<Person>) personRepository.findAll();
     }
 
     @PostMapping("/persons")
     void addPerson(@RequestBody Person person) {
         personRepository.save(person);
+    }
+
+    @DeleteMapping("/persons/{id}")
+    void deletePerson(@RequestBody Person person) {
+        personRepository.delete(person);
     }
 }
 
